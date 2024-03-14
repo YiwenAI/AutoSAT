@@ -44,7 +44,7 @@ python3 main_parallel.py \
 
 > :bulb: **Tips**
 >
-> We recomend to use `python3 main_parallel.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml](./examples/EasySAT/config.yaml)
+> We recomend to use `python3 main.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml](./examples/EasySAT/config.yaml)
 > 
 > When `original` is set to `False`, you have to set **dict** `original_result` in your config.yaml
 >
