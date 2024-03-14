@@ -1,0 +1,14 @@
+{
+  "time": {
+    "10": 263.5,
+    "11": 264.25,
+    "12": 261.0,
+    "9": 260.75
+  },
+  "prompt": {
+    "10": "else if (lbd_queue_size >= 75 && 0.95 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+    "11": "else if (lbd_queue_size >= 70 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+    "12": "else if (lbd_queue_size >= 75 && 0.92 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+    "9": "else if (lbd_queue_size >= 75 && 0.85 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  }
+}

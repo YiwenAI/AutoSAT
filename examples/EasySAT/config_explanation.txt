@@ -1,0 +1,22 @@
+# Params for Train
+iteration_num: 4                          # Number of iteration rounds during training.
+batch_size: 4                             # Number of requests to the LLM per iteration.
+data_parallel_size: 20                    # Number of data parallelism within each batch.
+devoid_duplication: false                 # Whether to prevent duplication.
+llm_model: "Qwen"                         # LLM model selection, currently supports ["gpt-4-1106-preview", "gpt-3.5-turbo", "Qwen", "llama", "deepseek"]
+timeout: 2                                # Timeout for SAT solver during training. Unit: second.
+data_dir: "./"                            # Path to the training dataset.
+project: "EasySAT/"                       # The base project that requires AutoSAT enhancement.
+task: "bump_var_function"                 # The specific task within the base project that requires enhancement.
+original: False                           # Whether to require the baseline results. If `True`, run the baseline on the training set (the baseline solver is default at './examples/{project}/original_EasySAT/', you can alter it as you wish); if `False`, directly utilize the 'original result'.
+original_result: {'time': 1, 'PAR-2': 2}  # Baseline results with `time` and `PAR-2`.
+
+# Params for Evaluation Or Test
+SAT_solver_file_path: './'                # Path where the SAT solver files are stored for testing. (NOTICE: auxiliary functions should also be in this directory, such as `EasySAT.hpp`)
+eval_timeout: 5                           # Timeout during evaluation.
+results_save_path: './'                   # Path to store test results.
+eval_data_dir: "./"                       # Path to the test dataset.
+eval_parallel_size: 10                    # Number of data parallelism for testing.
+rand_seed: 42                             # Random seed for testing.
+keep_intermediate_results: False          # `True`: Keep intermediate test results; `False`: Delete intermediate results after use.
+method_name: 'your_solver_name'           # SAT Solver Name    

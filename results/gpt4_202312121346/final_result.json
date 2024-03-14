@@ -1,0 +1,163 @@
+{
+  "0": "925",
+  "1": [
+    "1021\n",
+    "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  ],
+  "2": [
+    "876\n",
+    "else if (lbd_queue_size == 50 && 0.8 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && conflicts > 1000) restart();"
+  ],
+  "3": [
+    "852\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "4": [
+    "1028\n",
+    "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  ],
+  "5": [
+    "1029\n",
+    "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  ],
+  "6": [
+    "1069\n",
+    "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 1)) restart();"
+  ],
+  "7": [
+    "1069\n",
+    "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 1)) restart();"
+  ],
+  "8": [
+    "881\n",
+    "else if (lbd_queue_size == 50 && 0.8 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts > 100 && conflicts > 1000) restart();"
+  ],
+  "10": [
+    "850\n",
+    "else if (lbd_queue_size == 50 && (1.1 * fast_lbd_sum / slow_lbd_sum) > (conflicts / (1.1 * lbd_queue_size)) && restarts > 100) restart();"
+  ],
+  "11": [
+    "851\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "12": [
+    "696\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "13": [
+    "930\n",
+    "else if (lbd_queue_size == 50 && (1.1 * fast_lbd_sum / slow_lbd_sum) > (0.9 * conflicts / lbd_queue_size)) restart();"
+  ],
+  "14": [
+    "700\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "15": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "16": [
+    "935\n",
+    "else if (lbd_queue_size == 50 && (1.1 * fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "9": [
+    "853\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "17": [
+    "663\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "18": [
+    "853\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "19": [
+    "851\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "20": [
+    "696\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "21": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "22": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "23": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size) && restarts > 200) restart();"
+  ],
+  "24": [
+    "857\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "25": [
+    "663\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "26": [
+    "853\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "27": [
+    "851\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "28": [
+    "697\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "29": [
+    "697\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > 1.2 * (conflicts / lbd_queue_size) && restarts < 500) restart();"
+  ],
+  "30": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "31": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > (conflicts / lbd_queue_size)) restart();"
+  ],
+  "32": [
+    "857\n",
+    "else if (lbd_queue_size == 50 && (fast_lbd_sum / slow_lbd_sum) > 1.2 * (conflicts / lbd_queue_size)) restart();"
+  ],
+  "33": [
+    "853\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "34": [
+    "850\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "35": [
+    "851\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.05) restart();"
+  ],
+  "36": [
+    "851\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "37": [
+    "697\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "38": [
+    "698\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "39": [
+    "854\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ],
+  "40": [
+    "857\n",
+    "else if (lbd_queue_size == 50 && ((fast_lbd_sum / slow_lbd_sum) - (conflicts / lbd_queue_size)) > 0.1) restart();"
+  ]
+}

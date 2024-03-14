@@ -1,0 +1,86 @@
+{
+  "0": {
+    "time": 941.25,
+    "prompt": "else if (lbd_queue_size == 50 && 0.8 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "1": {
+    "time": 1007.75,
+    "prompt": "else if (lbd_queue_size == 50 && 0.7 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 1)) restart();"
+  },
+  "2": {
+    "time": 1091.25,
+    "prompt": "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "3": {
+    "time": 1134.25,
+    "prompt": "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 1)) restart();"
+  },
+  "4": {
+    "time": 1133.0,
+    "prompt": "else if (lbd_queue_size == 50 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 1)) restart();"
+  },
+  "5": {
+    "time": 858.5,
+    "prompt": "else if (lbd_queue_size == 60 && 0.85 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "6": {
+    "time": 854.25,
+    "prompt": "else if (lbd_queue_size == 60 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "7": {
+    "time": 1084.5,
+    "prompt": "else if (lbd_queue_size == 50 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (conflicts + 2) && restarts < 1000) restart();"
+  },
+  "8": {
+    "time": 1071.5,
+    "prompt": "else if (lbd_queue_size == 50 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "10": {
+    "time": 862.5,
+    "prompt": "else if (lbd_queue_size == 60 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "11": {
+    "time": 863.75,
+    "prompt": "else if (lbd_queue_size == 70 && 0.55 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();"
+  },
+  "12": {
+    "time": 862.0,
+    "prompt": "else if (lbd_queue_size == 60 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500) restart();"
+  },
+  "9": {
+    "time": 862.0,
+    "prompt": "else if (lbd_queue_size == 60 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts > 1000) restart();"
+  },
+  "13": {
+    "time": 862.75,
+    "prompt": "else if (lbd_queue_size == 60 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 400) restart();"
+  },
+  "14": {
+    "time": 864.0,
+    "prompt": "else if (lbd_queue_size == 60 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 600) restart();"
+  },
+  "15": {
+    "time": 862.0,
+    "prompt": "else if (lbd_queue_size == 65 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500 && conflicts > 1000) restart();"
+  },
+  "16": {
+    "time": 862.0,
+    "prompt": "else if (lbd_queue_size == 60 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500) restart();"
+  },
+  "17": {
+    "time": 863.5,
+    "prompt": "else if (lbd_queue_size == 70 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 550 && conflicts > 1200) restart();"
+  },
+  "18": {
+    "time": 861.5,
+    "prompt": "else if (lbd_queue_size == 65 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500 && conflicts > 1000) restart();"
+  },
+  "19": {
+    "time": 863.25,
+    "prompt": "else if (lbd_queue_size == 70 && 0.6 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500 && conflicts > 1500) restart();"
+  },
+  "20": {
+    "time": 862.5,
+    "prompt": "else if (lbd_queue_size == 65 && 0.65 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts && restarts < 500 && conflicts > 1000) restart();"
+  }
+}

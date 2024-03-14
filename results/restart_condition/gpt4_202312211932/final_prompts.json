@@ -1,0 +1,22 @@
+{
+  "1": "else if (lbd_queue_size == 60 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+  "3": "else if (lbd_queue_size == 50 && 1.0 * fast_lbd_sum / lbd_queue_size > 2 * slow_lbd_sum / conflicts) restart();",
+  "2": "else if (lbd_queue_size > 40 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+  "4": "else if (lbd_queue_size > 70 && 0.9 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "7": "else if (lbd_queue_size > 70 && 1.1 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "8": "else if (lbd_queue_size > 80 && 0.8 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "5": "else if (lbd_queue_size > 70 && 0.9 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "6": "else if (lbd_queue_size > 70 && 0.9 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "9": "else if (lbd_queue_size > 90 && 0.7 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "12": "else if (lbd_queue_size > 85 && 0.75 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "11": "else if (lbd_queue_size > 80 && 0.8 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts && activity_sum > 10000) restart();",
+  "10": "else if (lbd_queue_size > 90 && 0.7 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "14": "else if (lbd_queue_size > 80 && 0.8 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "13": "else if (lbd_queue_size > 80 && 0.7 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "16": "else if (lbd_queue_size > 80 && 0.8 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "15": "else if (lbd_queue_size > 80 && 0.8 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "20": "else if (lbd_queue_size > 100 && 0.85 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "18": "else if (lbd_queue_size > 80 && 0.85 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / (1.1 * conflicts)) restart();",
+  "17": "double dynamic_factor = 1.0 - (double)conflicts / slow_lbd_sum;\nelse if (lbd_queue_size > 80 && dynamic_factor * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();",
+  "19": "else if (lbd_queue_size > 90 && 0.75 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / conflicts) restart();"
+}

@@ -1,0 +1,14 @@
+{
+  "time": {
+    "1": 491.25,
+    "2": 259.5,
+    "3": 264.5,
+    "4": 502.75
+  },
+  "prompt": {
+    "1": "else if (lbd_queue_size == 50 && 0.7 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / (2 * conflicts)) restart();",
+    "2": "else if (lbd_queue_size >= 60 && 0.95 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+    "3": "else if (lbd_queue_size == 60 && 0.9 * fast_lbd_sum / lbd_queue_size > slow_lbd_sum / conflicts) restart();",
+    "4": "else if (lbd_queue_size > 40 && 0.75 * fast_lbd_sum / lbd_queue_size < slow_lbd_sum / (conflicts + 1)) restart();"
+  }
+}

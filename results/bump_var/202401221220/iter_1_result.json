@@ -1,0 +1,8 @@
+{
+  "time": {
+    "6": 11827
+  },
+  "prompt": {
+    "6": "void Solver::bump_var(int var, double coeff) {\n    // Increase the activity of the variable by the increment times the coefficient.\n    activity[var] += var_inc * coeff;\n    \n    // Check if we need to rescale to prevent floating-point overflow.\n    if (activity[var] > 1e100) {\n        // Scale down all activities to keep numbers manageable.\n        double rescale_factor = 1e-100;\n        for (int i = 1; i <= vars; i++) {\n            activity[i] *= rescale_factor;\n        }\n        var_inc *= rescale_factor; // Scale down the increment as well.\n    }\n    \n    // Check if the variable is unassigned and update the heap accordingly.\n    // This is because the only time a variable is not in the heap is initially or when it has been assigned a value.\n    if (value[var] == 0) {\n        // If the variable is not in the heap, insert it.\n        if (!vsids.inHeap(var)) {\n            vsids.insert(var);\n        }\n        // Update the variable's position in the heap.\n        vsids.update(var);\n    }\n}"
+  }
+}

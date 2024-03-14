@@ -1,0 +1,8 @@
+cnf File 	 Duration 	 Situation 
+./temp/data_eval\01d142c43f3ce9a8c5ef7a1ecdbb6cba-urquhart3_25bis.shuffled.cnf	5	timeout
+./temp/data_eval\0e89b0f96c99f1a6aaaf66c3ae805919-SCPC-500-15.cnf	5	timeout
+./temp/data_eval\0c75119940f87f2bc1dc3f53aeedc02b-20-100-lambda100-89_sat.cnf	5	timeout
+./temp/data_eval\1c2bd05b935d6c3239907159f13f2a1d-sted5_0x0-40.cnf	0	satisfiable
+./temp/data_eval\0dc468413b65339fad7e4f981bf2fb1e-reconf20_61_myciel4_2.cnf	5	timeout
+./temp/data_eval\1ebab99edff4c0470c8aa753bb9d3353-summle_X8637_steps8_I1-2-2-4-4-8-25-100.cnf	5	timeout
+{'PAR-2': 1.6666666666666667, 'total_time': 4.166666666666667, 'satisfiable': 1, 'unsatisfiable': 0, 'timeout': 5, 'solved': 1, '#questions': 6}

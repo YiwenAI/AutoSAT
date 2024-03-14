@@ -1,0 +1,8 @@
+SAT_solver_file_path: './examples/EasySAT/original_EasySAT/EasySAT.cpp'
+timeout: 5
+results_save_path: './temp/eval_results/'
+eval_data_dir: "data_eval"
+eval_parallel_size: 3
+rand_seed: 42
+keep_intermediate_results: False
+model_name: 'your_Solver_Name'
