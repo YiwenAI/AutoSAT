@@ -2,11 +2,14 @@
 
 ## Clone this repo
 
-`git clone --recurse-submodules https://github.com/YiwenAI/AutoSAT`
+`git clone https://github.com/YiwenAI/AutoSAT`
 
 
 
 ## Installation
+We support both **Linux** and **Windows**  
+1. Python 3.10 
+2. G++ 17 or higher to support `filesystem`
 
 Install requirements:
 `pip install -e .`
@@ -93,12 +96,6 @@ We use the following metrics to evaluate the performance of a Solver.
   * #unsatisfied: Number of solving unfeasible questions
 
   * #timeout: Number of timeout cases.
-
-
-## Environment 
-We support both **Linux** and **Windows**  
-1. Python 3.10 
-2. G++ 17 or higher to support `filesystem`
 
 
 ## Acknowledgement
