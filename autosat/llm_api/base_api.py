@@ -68,34 +68,8 @@ class LocalCallAPI(BaseCallAPI):
 
 
 if __name__ == '__main__':
-    # llm_api = LocalCallAPI(api_base="http://172.26.1.16:31251/v1",
-    #                       api_key='OpenRL-ashgfwdadfyafgafsfnthabq',
-    #                       model_name="OpenRL/azure/gpt4-32k-0613")
-    # # answer = llm_api.call_api(prompt_file='../template/EasySAT/bump_var_function/original_prompt.txt')
-    # answer = llm_api.call_api(prompt_file='../temp/prompts/feedback_prompt.txt')
-    #
-    # print(answer)
-
-    # llm_api = LocalCallAPI(api_base="http://172.26.1.16:31251/v1",
-    #                       api_key='OpenRL-ashgfwdadfyafgafsfnthabq',
-    #                       model_name="OpenRL/azure/gpt3.5_turbo-16k-0613")
-    # answer = llm_api.call_api(prompt_file='../template/EasySAT/bump_var_function/original_prompt.txt')
-    # print(answer)
-
-    # llm_api = LocalCallAPI(api_base="http://172.26.1.16:31251/v1",
-    #                       api_key="sk-",
-    #                       model_name="modelscope/qwen/Qwen-72B-Chat")
-    # answer = llm_api.call_api(prompt_file='../template/EasySAT/bump_var_function/original_prompt.txt')
-    # print(answer)
-
     llm_api = LocalCallAPI(api_base="http://172.26.1.16:31251/v1",
                           api_key="sk-",
                           model_name="modelscope/modelscope/Llama-2-70b-chat-ms")
     answer = llm_api.call_api(prompt_file='../template/EasySAT/bump_var_function/original_prompt.txt')
     print(answer)
-
-    # llm_api = LocalCallAPI(api_base="http://172.26.1.16:31251/v1",
-    #                       api_key="sk-",
-    #                       model_name="modelscope/deepseek-ai/deepseek-coder-33b-instruct")
-    # answer = llm_api.call_api(prompt_file='../template/EasySAT/bump_var_function/original_prompt.txt')
-    # print(answer)
