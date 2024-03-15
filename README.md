@@ -1,5 +1,10 @@
 # AutoSAT
 
+Welcome to the official repository for the paper ["AutoSAT: Automatically Optimize SAT Solvers via Large Language Models"](https://arxiv.org/abs/2402.10705).
+This repository is dedicated to automatically optimize heuristics in SAT solvers through Large Language Models (LLMs). 
+We hope our method can be universally applied to a variety of solvers and welcome researchers from all backgrounds to join us in this endeavor!
+
+
 ## Clone this repo
 
 `git clone https://github.com/YiwenAI/AutoSAT`
@@ -105,9 +110,11 @@ Our baseline is [EasySAT](https://github.com/shaowei-cai-group/EasySAT) and we o
 
 If our work has been helpful to you, please feel free to cite us:
 
-`@article{sun2024autosat,
+```latex
+@article{sun2024autosat,
   title={AutoSAT: Automatically Optimize SAT Solvers via Large Language Models},
   author={Sun, Yiwen and Zhang, Xianyin and Huang, Shiyu and Cai, Shaowei and Zhang, Bing-Zhen and Wei, Ke},
   journal={arXiv preprint arXiv:2402.10705},
   year={2024}
-}`
+}
+```
