@@ -17,15 +17,14 @@ def get_batch_id(count, batch_size):
     return (count-1) % batch_size
 
 def revise_file(file_name, save_dir, *args, **kwargs):
-    # current_working_directory = os.getcwd()
-    # print(f"current_working_directory: {current_working_directory}")
-    with open(file_name, 'r') as f:
-        pass
-
     env = Environment(loader=FileSystemLoader('.'))
-    template = env.get_template(file_name)
+    try:
+        template = env.get_template(file_name)
+    except:
+        raise FileNotFoundError(f'''file path '{file_name}' is not correct. 
+                                ATTENTION: please ENSURE                           (1) `SAT_solver_file_path` is located within the current working directory, `./` 
+                                (2) `SAT_solver_file_path` should be a relative path. ''')
     output = template.render(*args, **kwargs)
-
     with open(save_dir, 'w') as f:
         f.write(output)
 
