@@ -12,7 +12,7 @@ original: False                           # Whether to require the baseline resu
 original_result: {'time': 1, 'PAR-2': 2}  # Baseline results with `time` and `PAR-2`.
 
 # Params for Evaluation Or Test
-SAT_solver_file_path: './'                # Path where the SAT solver files are stored for testing. (NOTICE: auxiliary functions should also be in this directory, such as `EasySAT.hpp`)
+SAT_solver_file_path: './'                # Path where the SAT solver files are stored for testing. (NOTICE: auxiliary functions should also be in this directory, such as `EasySAT.hpp`) NOTICE, the path is located within the current working directory and should be a relative path.  
 eval_timeout: 5                           # Timeout during evaluation.
 results_save_path: './'                   # Path to store test results.
 eval_data_dir: "./"                       # Path to the test dataset.
