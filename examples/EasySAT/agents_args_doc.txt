@@ -1,0 +1,43 @@
+Advisor：
+{
+	"task":  Heuristics to modification, e.g. a function or a condition
+	"prompt_fpath": Path of prompt template  
+	"origin_key_code": Key codes for backbone SAT Solver
+	"origin_target_code": Original Heuristics 
+	"other_tips": You can flexible guide the agents, in anyway you want
+}
+
+
+
+Coder:
+{
+	"task":  Heuristics to modification, e.g. a function or a condition
+	"prompt_fpath": Path of prompt template   
+	"modification_direction": From `Advisor`,  directions for modification
+	"description":  From `Advisor`, description for `task`
+	"origin_description": If No `Advisor` , origin_description is used. (Note that, which can be seen as Expert Mode, as apllied at last version)
+	"origin_key_code": Key codes for backbone SAT Solver
+	"origin_target_code": Original Heuristics
+	"code_format":  Target code Format to guide LLMs 
+	"origin_result": "",  Baseline results for comparison
+	"experiment_results": "", Results in last iteration
+	"best_code": Best code now.
+	"best_code_description": From `Evaluator` , the analysis for  `best_code`
+
+	 "extra_var_dict": Extra Dict for external params , e.g. {"lbd_queue_size": 50},
+	"other_tips": You can flexible guide the agents, in anyway you want. For instance, you can set  thorough constrains like "you should also point out `lbd_queue_size`, in the format of : '''// start lbd_queue_size THE VALUE YOU USED IN YOUR CONDITION CODE   // end lbd_queue_size " ;
+	Also, you can determine  params tuning, like "ATTENTION ** You can try to only carefully change params in the target function , e.g. const for rephase_limit to sum: `8192`, factor for threshold to multiply `0.9` "
+
+}
+
+
+Evaluator:
+{
+	"task":  Heuristics to modification, e.g. a function or a condition
+	"prompt_fpath": Path of prompt template  
+	"origin_key_code": Key codes for backbone SAT Solver
+	"origin_target_code": Original Heuristics 
+	"llm_generation": Heuristics Codes from `Coder`
+	"other_tips": You can flexible guide the agents, in anyway you want 
+}
+

@@ -5,14 +5,18 @@ data_parallel_size: 20                    # Number of data parallelism within ea
 devoid_duplication: false                 # Whether to prevent duplication.
 llm_model: "Qwen"                         # LLM model selection, currently supports ["gpt-4-1106-preview", "gpt-3.5-turbo", "Qwen", "llama", "deepseek"]
 timeout: 2                                # Timeout for SAT solver during training. Unit: second.
-data_dir: "./"                            # Path to the training dataset.
+data_dir: "./"                            # Path to dataset during searching.
 project: "EasySAT/"                       # The base project that requires AutoSAT enhancement.
 task: "bump_var_function"                 # The specific task within the base project that requires enhancement.
 original: False                           # Whether to require the baseline results. If `True`, run the baseline on the training set (the baseline solver is default at './examples/{project}/original_EasySAT/', you can alter it as you wish); if `False`, directly utilize the 'original result'.
 original_result: {'time': 1, 'PAR-2': 2}  # Baseline results with `time` and `PAR-2`.
+agent_type: 'advisor-coder-evaluator'     # Agent Combination selection, currently supports ['advisor-coder-evaluator','coder-evaluator','advisor-coder', 'coder-only']
+agent_args_folder: './'                   # Path to advisor, coder , evaluator PROMPT along with their args
+temperature: 0.8                          # init llm-temperature, decaying with iteration
+
 
 # Params for Evaluation Or Test
-SAT_solver_file_path: './'                # Path where the SAT solver files are stored for testing. (NOTICE: auxiliary functions should also be in this directory, such as `EasySAT.hpp`) NOTICE, the path is located within the current working directory and should be a relative path.  
+SAT_solver_file_path: './'                # Path where the SAT solver files are stored for testing. (NOTICE: auxiliary functions should also be in this directory, such as `EasySAT.hpp`)
 eval_timeout: 5                           # Timeout during evaluation.
 results_save_path: './'                   # Path to store test results.
 eval_data_dir: "./"                       # Path to the test dataset.

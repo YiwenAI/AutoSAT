@@ -1,0 +1,35 @@
+import sat.
+
+main =>
+    N = {*-N-*},
+    K = {*-K-*},
+    zemkeller(N,K).
+
+zemkeller(N,K) =>
+    Ps = new_array(K),
+    foreach(I in 1..K)
+        Di = [E : E in 1..N, E mod I==0],
+	Ps[I] = new_list(Di.length),
+	Ps[I] :: Di,
+	all_different(Ps[I]),
+	if I>1 then
+            gen_order_constr(Ps[1],Ps[I])
+	end
+    end,
+    MinAlter #= min([Alter : I in 1..K, alter(Ps[I],0,Alter)]),
+    solve($[dump,max(MinAlter)],(Ps,MinAlter)).
+
+% ensure that the order of any two numbers in P1 is preserved in Pi
+gen_order_constr(P1,[E1,E2|Pi]) =>
+    element(I1,P1,E1),
+    element(I2,P1,E2),
+    I1 #< I2,
+    gen_order_constr(P1,[E2|Pi]).
+gen_order_constr(_,_) => true.
+
+alter([E1,E2,E3|P],Alter0,Alter) =>
+    B12 #<=> (E1#<E2),
+    B23 #<=> (E2#<E3),
+    B #<=>((B12 #/\ #~B23) #\/ (#~B12 #/\ B23)),
+    alter([E2,E3|P],$Alter0+B,Alter).
+alter(_,Alter0,Alter) => Alter=Alter0.

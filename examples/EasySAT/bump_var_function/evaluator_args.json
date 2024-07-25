@@ -1,0 +1,7 @@
+{
+    "task": "bump_var",
+    "prompt_fpath": "",
+    "origin_key_code": "",
+    "origin_target_code": "void Solver::bump_var(int var, double coeff) {\n    if ((activity[var] += var_inc * coeff) > 1e100) {           // Update score and prevent float overflow\n        for (int i = 1; i <= vars; i++) activity[i] *= 1e-100;\n        var_inc *= 1e-100;}\n    if (vsids.inHeap(var)) vsids.update(var);                 // update heap\n}",
+    "llm_generation": ""
+}

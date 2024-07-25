@@ -1,0 +1,21 @@
+import sat.
+main =>
+    N = {*-K-*}, % even number
+    knight(N,X).
+
+ % Knight’s tour for even N*N.
+knight(N, X) =>
+    X = new_array(N,N),
+    X :: 1..N*N,
+    XVars = X.vars(),
+    % restrict the domains of each square
+    foreach (I in 1..N, J in 1..N)
+    D = [-1,-2,1,2],
+    Dom = [(I+A-1)*N + J+B : A in D, B in D,
+    abs(A) + abs(B) == 3,
+    member(I+A,1..N), member(J+B,1..N)],
+    Dom.length > 0,
+    X[I,J] :: Dom
+    end,
+    circuit(XVars),
+    solve([dump,ff,split],XVars).

@@ -1,0 +1,1 @@
+/root/Picat/picat CoinsGrid_.pi

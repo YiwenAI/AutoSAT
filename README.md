@@ -31,29 +31,36 @@ Install this package
 ## Train&Test
 
 ### Train
-
+In AutoSAT version 2.0, we add multi-agent for better exploration.
 ```
-python3 main_parallel.py \
+python3 main_parallel_MultiAgent.py \
         --iteration_num 4 \
         --batch_size 4 \
         --data_parallel_size 6 \
         --devoid_duplication False \
-        --timeout 500 \
+        --timeout 1500 \
         --data_dir your_train_set_path \
         --project EasySAT \
         --task bump_var_function \
         --original True \
+        --agent_type your_agent_combination \
+        --agent_args_folder your_agentsPrompt&args_path \
+        --temperature 0.5 \ 
         --api_base your_api_base \
         --api_key your_api_key
 ```
 
+
+
 > :bulb: **Tips**
 >
-> We recomend to use `python3 main.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml](./examples/EasySAT/config.yaml)
+> We recomend to use `python3 main_MultiAgent.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml (an example)](./examples/EasySAT/config.yaml)
 > 
 > When `original` is set to `False`, you have to set **dict** `original_result` in your config.yaml
->
+>  
 > Refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
+>
+> `agent_type` determines what agents to be used. `agent_args_floder` (includes advisor_args, coder_args, evaluator_args). We left flexiable interfaces to guide agents. See more details in [agents_args_doc](./examples/EasySAT/agents_args_doc.txt)
 >
 > The heuristic functions generated and the some metrics are save in the folder: './temp/prompts/' (final_result.json or iter_xx_result.json)
  
@@ -73,16 +80,16 @@ python3 evaluate.py \
 ```
 > :bulb: **Tips**
 >
-> We recomend to use `python3 evaluate.py --config your_eval_config_file_path` and pass the params by **.yaml** such as [config_eval.yaml](./examples/EasySAT/config_eval.yaml)
+> We recomend to use `python3 evaluate.py --config your_eval_config_file_path` and pass the params by **.yaml** such as [config_eval.yaml (an example)](./examples/EasySAT/eval_config.yaml)
 >
 > Refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
 >
 > The final evaluation results are saved in the folder you set previously -- **results_save_path**
 
 ### Dataset
-* AutoSAT adapts the following training set, a total of 48 SAT instances (37.5% from SAT Competition 2018, 62.5% from SAT Competition 2022). We also collect some specific SAT questions such as CNP , SCPC and PAR. All data are in [cnf_data](https://drive.google.com/drive/folders/1-au8hBbx4YAdJDlct9glCODpL0TQcYnA?usp=drive_link)
+* All of our datasets can be obtained from [cnf_data_link](https://drive.google.com/drive/folders/1-au8hBbx4YAdJDlct9glCODpL0TQcYnA?usp=drive_link)
 
-* We also provide the codes we used to generate the specific questions in [`./data/`](./data/), and the default data directory is in `./temp/data_train`
+* The codes we used to generate the specific problems are in [`./data/`](./data/)
   
 * Access more SAT Competition questions by visiting [SAT Competition](https://satcompetition.github.io/)   
 
@@ -104,7 +111,7 @@ We use the following metrics to evaluate the performance of a Solver.
 
 
 ## Acknowledgement
-Our baseline is [EasySAT](https://github.com/shaowei-cai-group/EasySAT) and we only add data parallel and file saving modules. Thanks for the wonderful work.
+Our Backbone (as baseline) is [EasySAT](https://github.com/shaowei-cai-group/EasySAT) and we only add data parallel and file saving modules. Thanks for the wonderful work.
 
 ## Citing us
 

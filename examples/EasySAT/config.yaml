@@ -1,19 +1,27 @@
 iteration_num: 2
-batch_size: 4
-data_parallel_size: 2
+batch_size: 2
+data_parallel_size: 32
 devoid_duplication: false
 llm_model: "gpt-3.5-turbo"
-timeout: 2
-data_dir: "./temp/data_train"
-project: "EasySAT/"
-task: "bump_var_function/"
-original: true
-original_result: {'time':1,'PAR-2':2}
+timeout: 10
+data_dir: "YOUR DATA PATH"
+project: "EasySAT"
+task: "bump_var_function" # rephase_function, restart_condition ; * to be consistent with your `folder` saving original Solver code..
+original: True
+original_result: {'time':0,'PAR-2':1} # Your Baseline results (* total sum , not mean)
 
+agent_type: 'advisor-coder-evaluator' # ['advisor-coder-evaluator','coder-evaluator','advisor-coder', 'coder-only']
+agent_args_folder: './examples/EasySAT/bump_var_function' # advisor, coder , evaluator PROMPT with their args
+temperature: 0.8 # llm-temperature
+
+api_base: 'YOUR　API BASE'
+api_key: 'YOUR API KEY'
+
+NeedEval: True
 SAT_solver_file_path: './examples/EasySAT/original_EasySAT/EasySAT.cpp'
-eval_timeout: 5
+eval_timeout: 15
 results_save_path: './temp/eval_results/'
-eval_data_dir: "./temp/data_eval"
-eval_parallel_size: 1
+eval_data_dir: "YOUR TEST DATA PATH"
+eval_parallel_size: 36
 rand_seed: 42
 keep_intermediate_results: False

@@ -29,6 +29,7 @@ SOFTWARE.
 #include <iostream>
 #include <filesystem>
 #include <string>
+#include <cmath>
 
 namespace fs = std::filesystem;
 

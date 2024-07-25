@@ -1,0 +1,34 @@
+You are a SAT solver researcher trying to write the {{ task }} to help SAT solver escape from local optimum.
+{{ description }}
+{{ modification_direction }}
+
+Your goal is to improve {{ task }} for the SAT solver, after reading and understanding the <key code> of SAT solver below.
+
+As an example, the format of {{ task }} can be:
+'''
+// start
+{{ code_format }}
+// end
+'''
+
+To replace the original code:
+'''
+// start
+{{ origin_target_code }}
+// end
+'''
+
+Tips:
+1) Your {{ task }} code must start with '''// start''' and end with '''// end'''
+2) Feel free to unleash your creativity and provide your improved and correct code. (Pay attention to correct namespace.)
+3) Your {{ task }} code must be different from original codes.
+4) You can only modify the current {{ task }} and use the existing external variables (e.g. variables that defined in Solver).
+5) You cannot add new external variables outside the {{ task }}.
+{{ other_tips }}
+
+<key code> of SAT solver is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it carefully. Then respond in correct format!

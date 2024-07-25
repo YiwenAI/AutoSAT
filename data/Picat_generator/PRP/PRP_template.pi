@@ -1,0 +1,42 @@
+import sat.
+
+main =>
+    D = {*-DAY-*},
+    U = {*-U-*},
+    M = 1000,
+    Cmin = 0,
+    Cmax = 100,
+    Smin = 0,
+    Smax = 100,
+    % Define the matrices
+    ProductNumber = new_array(D,U),
+    Costs = new_array(D,U),
+    SalePrices = new_array(D,U),
+
+    ProductNumber :: 0..M,
+    Costs :: Cmin..Cmax,
+    SalePrices :: Smin..Smax,
+
+
+    foreach (Day in 1..D)
+        scalar_product(ProductNumber[Day],SalePrices[Day],Costs[Day],#>=,0)
+    end,
+
+    foreach (Dayd in 1..D-1)
+        sum(ProductNumber[Dayd+1]) #> sum(ProductNumber[Dayd])
+    end,
+
+    foreach (Daydd in 1..D-1)
+        min(ProductNumber[Daydd+1].to_list()) #< min(ProductNumber[Daydd].to_list())
+    end,
+
+    Vars = ProductNumber ++ Costs ++ SalePrices,
+    solve([dump],Vars),
+    println(Vars).
+
+
+
+scalar_product(A,Xs1,Xs2,Rel,Product) =>
+    scalar_product(A,Xs1,P1),
+    scalar_product(A,Xs2,P2),
+    call(Rel,P1,P2).

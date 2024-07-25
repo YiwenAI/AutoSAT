@@ -1,0 +1,37 @@
+You are a SAT solver researcher trying to write the {{ task }} to help SAT solver escape from local optimum.
+Your goal is to evaluate whether the <{{ task }} you wrote> of the SAT solver is appropriate, after reading and understanding the <key code> of SAT solver below.
+Then, you need to inform me about the modifications to the {{ task }} are "Substantial Improvement," "Parameter Tuning," or "No Modification".
+
+Your answer must follow the following json format:
+{
+    "type": choose one from ['Substantial Improvement','Parameter Tuning','No Modification'],
+    "extra_analysis":"Provide a logical and concise analysis of the {{ task }} you wrote and explain its underlying intuition compared with original code.",
+}
+
+Tips:
+1) You must check for syntax errors to ensure it can run correctly.
+2) You need to compare the {{ task }} you modified to the original code, and determine if there are substantial improvements (note that parameter adjustments alone do not count).
+3) Sometimes, although there are differences between the modified code and the original code, these are just changes to variable names or synonymous transformations in statements. Such cases should also be considered as parameter tuning.
+4) If there are substantial modifications to the revamped code, respond with: "Substantial Improvement";
+   If there are no substantial changes, merely adjustments to parameters, respond with: "Parameter Tuning";
+   If there are no modifications at all including adding intermediate parameters, respond with: "No Modification".
+5) If you think the `type` is `No modification`, then `extra_analysis` should be empty.
+6) 'extra_analysis' should be brief and no more than 3 sentences.
+{{ other_tips }}
+
+<{{ task }} you wrote>
+"""
+{{ llm_generation }}
+"""
+
+<original {{ task }}>
+"""
+{{ origin_target_code }}
+"""
+
+<key code> of SAT solver is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it step by step. Then respond strictly in JSON format!

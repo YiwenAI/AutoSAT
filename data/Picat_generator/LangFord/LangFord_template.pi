@@ -1,0 +1,21 @@
+import sat.
+
+main =>
+    K = {*-K-*},
+    langford(K, Solution, Position),
+    println(solution=Solution).
+
+langford(K, Solution, Position) =>
+    K2 = 2*K,
+    Position = new_list(K2), Position :: 1..K2,
+    Solution = new_list(K2), Solution :: 1..K,
+    all_distinct(Position),
+    foreach (I in 1..K)
+        Position[K+I] #= Position[I] + I+1,
+        element(Position[I],Solution,I),
+        element(Position[K+I],Solution,I)
+    end,
+    % symmetry breaking:
+    Solution[1] #< Solution[K2],
+    Vars = Solution ++ Position,
+    solve([dump],Vars).

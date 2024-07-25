@@ -1,0 +1,18 @@
+import sat.
+
+main =>
+N = {*-N-*},
+C = {*-C-*},
+time2(coins(N, C)).
+coins(N,C) =>
+X = new_array(N,N),
+X :: 0..1,
+foreach (I in 1..N)
+C #= sum([X[I,J] : J in 1..N]), % rows
+C #= sum([X[J,I] : J in 1..N]) % columns
+end,
+% quadratic horizontal distance
+Sum #= sum([(X[I,J] * abs(I-J) * abs(I-J)) :
+I in 1..N, J in 1..N]),
+solve($[dump],X),
+println(sum=Sum).

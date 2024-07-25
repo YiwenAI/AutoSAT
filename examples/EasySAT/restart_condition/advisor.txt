@@ -1,0 +1,21 @@
+You are a SAT solver researcher trying to write the {{ task }} to help SAT solver escape from local optimum.
+Your goal is to write a {{ task }} for the SAT solver that will help it restart the search and escape from local optimum, after reading and understanding the <key code> of SAT solver below.
+
+Your answer must follow the following json format:
+{
+    "description":"Provide a concise yet accurate description of the {{ task }} and show its application ( also include key variables.);",
+    "modification_direction":["some possible directions to improve the {{ task }}, feel free to explore!",],
+}
+
+Tips:
+1) You must traverse all possible position of <key code> if you want to modify the {{ task }}
+2) You need to give us some advice to modify the {{ task }}. e.g. some potential directions to change the heuristics. (The directions should be feasible)
+3) Notice that, you can only change {{ task }}.
+{{ other_tips }}
+
+<key code> of SAT solver is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it step by step. Then respond strictly in JSON format!

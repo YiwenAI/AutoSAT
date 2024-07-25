@@ -1,0 +1,51 @@
+You are a SAT solver researcher trying to write the {{ task }} to help SAT solver escape from local optimum.
+{{ description }}
+{{ modification_direction }}
+
+Your goal is to improve {{ task }} for the SAT solver, after reading and understanding the <key code> of SAT solver below.
+
+The experiment results of original code:
+###
+original provided {{ task }} is:
+'''
+{{ origin_target_code }}
+''' {{ original_result }} .
+###
+
+Experiment results of your provided code are:
+###
+{{ experiment_results }}
+###
+
+
+the best code you provided in the past iteration:
+'''
+{{ best_code }}
+'''
+Its description: {{ best_code_description }}
+
+
+As an example, the {{ task }} can be:
+'''
+// start
+{{ code_format }}
+// end
+'''
+to replace the original {{ task }} code.
+
+
+Tips:
+1) Your {{ task }} code must start with '''// start''' and end with '''// end'''
+2) Less execution time and lower PAR-2  mean better performance.
+3) Feel free to unleash your creativity and provide correct and enhanced code. (You may consult code from previous iterations for insights, but do not copy directly).
+4) Your new {{ task }} code must be different from previous codes.
+5) Your new {{ task }} could use useful variables from the solver as inputs if necessary.
+{{ other_tips }}
+
+
+<key code> of SAT solver is:
+"""
+{{ origin_key_code }}
+"""
+
+Take a deep breath and think it step by step. Then respond in correct format!

@@ -1,0 +1,1 @@
+/root/Picat/picat LangFord_.pi

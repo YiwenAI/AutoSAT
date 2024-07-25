@@ -5,27 +5,28 @@ import glob
 import shutil
 import platform
 import subprocess
+import json
 
 
 def get_code(answer, seperator):
-    start = answer.find(seperator[0]) + len(seperator[0])
+    # get code from format `separator`
+    start = answer.find(seperator[0])
     end = answer.find(seperator[1], start) # - len(seperator[1])
-    return answer[start:end]
+    if (start == -1) or (end == -1): return ''
+    return answer[start+len(seperator[0]): end]
 
 
 def get_batch_id(count, batch_size):
+    # from global_id -> batch_id
     return (count-1) % batch_size
 
 def revise_file(file_name, save_dir, *args, **kwargs):
+    # current_working_directory = os.getcwd()
+    # print(f"current_working_directory: {current_working_directory}")
     env = Environment(loader=FileSystemLoader('.'))
-    try:
-        template = env.get_template(file_name)
-    except:
-        raise FileNotFoundError(f'''file path '{file_name}' is not correct. 
-                                ATTENTION, please ENSURE :                          
-                                (1) `SAT_solver_file_path` is located within the current working directory, `./` 
-                                (2) `SAT_solver_file_path` should be a relative path. ''')
+    template = env.get_template(file_name)
     output = template.render(*args, **kwargs)
+
     with open(save_dir, 'w') as f:
         f.write(output)
 
@@ -61,7 +62,7 @@ def process_raw_results(folder_path, timeout, answers=None):
     for filename in os.listdir(folder_path):
         match = re.match(r'(\d+)_(\d+).txt', filename)
         if match:
-            id, num = match.groups()
+            id, num = match.groups() # Notice, id(key of result / results): str
             file_path = os.path.join(folder_path, filename)
             if os.path.isfile(file_path):
                 tmp_total_time = 0
@@ -100,7 +101,7 @@ def process_raw_results(folder_path, timeout, answers=None):
     else: # eval
         result['total time'] = result.pop('time')
         result.pop('prompt')
-        result_dict = {k: v['1'] for k, v in result.items()}
+        result_dict = {k: v['1'] for k, v in result.items()} # during evaluation, global_id \equiv '1'
         result_dict['#question'] = result_dict['satisfiable'] + result_dict['unsatisfiable'] + result_dict['timeout']
         result_dict['PAR-2'] = round(result_dict['PAR-2'] / result_dict['#question'] , 2)
         return result_dict, record_all_data
@@ -124,12 +125,11 @@ def collect_results(answers, repetition_dict, results, args):
                 break
             repetition_result["time"][key] = results["time"][key]
             repetition_result["prompt"][key] = results["prompt"][key]
-        # repetition_result = {key: results["time"][key] for key in repetition_list if key in results["time"]}
 
         result["time"].update(repetition_result["time"])
         result["prompt"].update(repetition_result["prompt"])
 
-    best_key = min(result["time"], key=result["time"].get)
+    best_key = min(result["PAR-2"], key=result["PAR-2"].get ) # global_id
     return result, {best_key: [result["time"][best_key], result["prompt"][best_key], result["PAR-2"][best_key]]}
 
 
@@ -154,7 +154,7 @@ def fill_core_codes(origin_file, target_file, answer_code,**kwargs):
     return
 
 
-def delete_InfiniteLoopInst(candidates, result_dict, results_folder='./temp/results/'):
+def delete_InfiniteLoopInst(candidates, result_dict,results_folder='./temp/results/'):
     failed_id_list = []
     for file_name in candidates:
         if not os.path.isfile(os.path.join(results_folder, file_name)):  # failed
@@ -167,8 +167,8 @@ def delete_InfiniteLoopInst(candidates, result_dict, results_folder='./temp/resu
     if platform.system() == 'Windows':
         try:
             result = subprocess.run(['taskkill', '/F', '/IM', 'EasySAT'], check=True, text=True)  # TODO check
-        except:
-            pass
+        except Exception as e:
+            print(f"wrong when killing procession: {e}")
         pass
     elif platform.system() == 'Linux':
         try:
@@ -178,8 +178,7 @@ def delete_InfiniteLoopInst(candidates, result_dict, results_folder='./temp/resu
             print(f"wrong when killing procession: {e}")
     else:
         raise NotImplementedError('sorry, we only support Wins Or Linux.')
-
-    return
+    return failed_id_list
 
 
 def copy_folder(src_folder, num, mode='train', target_folder = None):
@@ -220,15 +219,65 @@ def train_init(args):
 
 def check_reIteration(round, best_result_dict, baseline):
     # True: restart the prompt to avoid terrible functions; False: no need to restart
-    if round != 1: return False
+    if round <= 1: return False
     best_results = next(iter(best_result_dict.values()))
     if best_results[0] < baseline['time'] or best_results[2] < baseline['PAR-2']:
         return False
     return True
 
 
+def extract_json(text):
+    ''' extract json txt from first `{` & `}` if exist. '''
+    stack = []
+    json_start = None
+    for i, char in enumerate(text):
+        if char == '{':
+            if json_start is None:
+                json_start = i
+            stack.append(char)
+        elif char == '}':
+            if stack: stack.pop()
+            if not stack:
+                json_text = text[json_start:i+1]
+                return json_text
+    return None
 
-if __name__ == "__main__":
-    a = {'1': ['950\n', 'else if (conflicts % 1000 == 0 && fast_lbd_sum / lbd_queue_size > 5) restart();']}
-    value = list(a.values())[0][1]
-    print(value)
+def parse_txt_to_dict(txt):
+    '''parse `json file format` to `dict`. More flexible than json.load(.) / eval(.) '''
+    txt = txt.strip('{}\n ')
+    dict_result = {}
+    key, value = "", ""
+    is_key = True
+    for char in txt:
+        if char == ':' and is_key:
+            is_key = False
+        elif char == ',' and not is_key:
+            key = key.strip().strip('"')
+            value = value.strip()
+            dict_result[key] = value
+            key, value = "", ""
+            is_key = True
+        elif is_key:
+            key += char
+        else:
+            value += char
+    if key or value:
+        key = key.strip().strip('"')
+        value = value.strip()
+        dict_result[key] = value
+    return dict_result
+
+def decodeRawJsonAnswer(raw_text):
+    json_str = extract_json(text=raw_text)
+    try: # Fault-tolerance for llm
+        data = json.loads(json_str)
+    except:
+        data = parse_txt_to_dict(json_str)
+    return data
+
+def sanitize_filename(filename):
+    ''' filter invalid character for filename '''
+    illegal_chars = r'[\\/*?:"<>|\.\s]'
+    safe_filename = re.sub(illegal_chars, '_', filename)
+    return safe_filename
+
