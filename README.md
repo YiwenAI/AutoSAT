@@ -4,6 +4,8 @@ Welcome to the official repository for the paper ["AutoSAT: Automatically Optimi
 This repository is dedicated to automatically optimize heuristics in SAT solvers through Large Language Models (LLMs). 
 We hope our method can be universally applied to a variety of solvers and welcome researchers from all backgrounds to join us in this endeavor!
 
+This branch is for `AutoSAT_v2`(Multi Agent Version) , you can find original version (AutoSAT_v1) in branch `AutoSAT_v1`.
+
 
 ## Clone this repo
 
