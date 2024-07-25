@@ -33,7 +33,7 @@ Install this package
 ### Train
 In AutoSAT version 2.0, we add multi-agent for better exploration.
 ```
-python3 main_parallel_MultiAgent.py \
+python3 main_MultiAgent.py \
         --iteration_num 4 \
         --batch_size 4 \
         --data_parallel_size 6 \
