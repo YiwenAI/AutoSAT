@@ -186,7 +186,7 @@ def main(args):
     project_dir = os.path.join(args.project, args.task)
     print("project_dir: {}".format(project_dir))
 
-    # init...
+    # initialize workspace
     train_init(args)
     advisor_args, coder_args, evaluator_args = agents_init(init_files_folder=args.agent_args_folder)
 
@@ -208,10 +208,11 @@ def main(args):
             all_exist = all(
                 os.path.exists(os.path.join('./temp/results/', 'finished' + filename)) for filename in filenames)
             if all_exist:
-                results, best_result = collect_results(answers={0: advisor_args['origin_target_code']},
+                result, best_result = collect_results(answers={0: advisor_args['origin_target_code']},
                                                        repetition_dict={},
                                                        results={},
                                                        args=args)
+                resultsUpdatePerIteration(results, result, {}, {})
                 break
         print(results["time"]["0"])
 
@@ -333,7 +334,7 @@ def main(args):
         print("filenames: ", filenames)
         while True:
             end_time = time.time()
-            if end_time - start_time > args.timeout * (2 * data_num / args.data_parallel_size):
+            if end_time - start_time > args.timeout * (2 * data_num / args.data_parallel_size + 30):
                 warnings.warn(f": Infinite loop for some Solver Programs... please check later",
                               category=UserWarning, stacklevel=2)
                 result, _ = collect_results(answers=answers,
@@ -420,7 +421,7 @@ def main(args):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='', help='Path to the config file')
+    parser.add_argument('--config', type=str, default='./examples/EasySAT/config.yaml', help='Path to the config file')
     parser.add_argument('--iteration_num', type=int, default=4)
     parser.add_argument('--batch_size', type=int, default=4)
     parser.add_argument('--data_parallel_size', type=int, default=3)
