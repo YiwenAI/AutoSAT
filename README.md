@@ -29,66 +29,7 @@ Install this package
 
 `docker build -t autosat .`
 
-
-## Train&Test
-
-### Train
-In AutoSAT version 2.0, we add multi-agent for better exploration.
-```
-python3 main_MultiAgent.py \
-        --iteration_num 4 \
-        --batch_size 4 \
-        --data_parallel_size 6 \
-        --devoid_duplication False \
-        --timeout 1500 \
-        --data_dir your_train_set_path \
-        --project EasySAT \
-        --task bump_var_function \
-        --original True \
-        --agent_type your_agent_combination \
-        --agent_args_folder your_agentsPrompt&args_path \
-        --temperature 0.5 \ 
-        --api_base your_api_base \
-        --api_key your_api_key
-```
-
-
-
-> :bulb: **Tips**
->
-> We recomend to use `python3 main_MultiAgent.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml (an example)](./examples/EasySAT/config.yaml)
-> 
-> When `original` is set to `False`, you have to set **dict** `original_result` in your config.yaml
->  
-> Refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
->
-> `agent_type` determines what agents to be used. `agent_args_floder` (includes advisor_args, coder_args, evaluator_args). We left flexiable interfaces to guide agents. See more details in [agents_args_doc](./examples/EasySAT/agents_args_doc.txt)
->
-> The heuristic functions generated and the some metrics are save in the folder: './temp/prompts/' (final_result.json or iter_xx_result.json)
- 
-
-### Test
-```
-python3 evaluate.py \
-        --SAT_solver_file_path SAT_solver_file_path \
-        --results_save_path your_final_eval_results_savePath \
-        --batch_size 4 \
-        --eval_parallel_size 6 \
-        --eval_timeout 500 \
-        --eval_data_dir your_test_set_path \
-        --rand_seed 42
-        --keep_intermediate_results False \
-        --method_name your_solver_name
-```
-> :bulb: **Tips**
->
-> We recomend to use `python3 evaluate.py --config your_eval_config_file_path` and pass the params by **.yaml** such as [config_eval.yaml (an example)](./examples/EasySAT/eval_config.yaml)
->
-> Refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
->
-> The final evaluation results are saved in the folder you set previously -- **results_save_path**
-
-### Dataset
+## Dataset
 * All of our datasets can be obtained from [cnf_data_link](https://drive.google.com/drive/folders/1-au8hBbx4YAdJDlct9glCODpL0TQcYnA?usp=drive_link)
 
 * The codes we used to generate the specific problems are in [`./data/`](./data/)
@@ -111,6 +52,68 @@ We use the following metrics to evaluate the performance of a Solver.
 
   * #timeout: Number of timeout cases.
 
+## Train&Test
+### Preparation
+- Please refer to [data explanation](./data/README.md) to prepare your dataset
+- Prepare your api key
+- Make sure you have checkout prompts in ./examples
+
+### Train
+In AutoSAT version 2.0, we add multi-agent for better exploration.
+```
+python3 main_MultiAgent.py \
+        --iteration_num 4 \
+        --batch_size 4 \
+        --data_parallel_size 6 \
+        --devoid_duplication False \
+        --timeout 1500 \
+        --data_dir <your_train_set_path> \
+        --project EasySAT \
+        --task bump_var_function \
+        --original True \
+        --agent_type 'advisor-coder-evaluator' \
+        --agent_args_folder <your_agentsPrompt&args_path> \
+        --temperature 0.5 \ 
+        --api_base <your_api_base> \
+        --api_key <your_api_key>
+```
+
+
+
+> :bulb: **Tips**
+> - Please refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
+>  
+> - We recomend to use `python3 main_MultiAgent.py --config your_config_file_path ` and pass the params by **.yaml** such as [config.yaml (an example)](./examples/EasySAT/config.yaml)
+
+> :bulb: **More Details**
+> - When `original` is set to `False`, you have to set **dict** `original_result` in your config.yaml
+>
+> - `agent_type` determines what agents to be used. `agent_args_floder` (includes advisor_args, coder_args, evaluator_args). We left flexiable interfaces to guide agents. See more details in [agents_args_doc](./examples/EasySAT/agents_args_doc.txt)
+>
+> - The heuristic functions generated and the some metrics are save in the folder: './temp/prompts/' (final_result.json or iter_xx_result.json)
+ 
+
+### Test
+You can also evaluate your found solver heuristics:
+```
+python3 evaluate.py \
+        --SAT_solver_file_path SAT_solver_file_path \
+        --results_save_path your_final_eval_results_savePath \
+        --batch_size 4 \
+        --eval_parallel_size 6 \
+        --eval_timeout 500 \
+        --eval_data_dir your_test_set_path \
+        --rand_seed 42
+        --keep_intermediate_results False \
+        --method_name your_solver_name
+```
+> :bulb: **Tips**
+>
+> We recomend to use `python3 evaluate.py --config your_eval_config_file_path` and pass the params by **.yaml** such as [config_eval.yaml (an example)](./examples/EasySAT/eval_config.yaml)
+>
+> Refer to [configs explanation](./examples/EasySAT/config_explanation.txt) for more details.
+>
+> The final evaluation results are saved in the folder you set previously -- **results_save_path**
 
 ## Acknowledgement
 Our Backbone (as baseline) is [EasySAT](https://github.com/shaowei-cai-group/EasySAT) and we only add data parallel and file saving modules. Thanks for the wonderful work.
