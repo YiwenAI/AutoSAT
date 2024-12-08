@@ -1,0 +1,1 @@
+/root/Picat/picat MineSweeper_.pi

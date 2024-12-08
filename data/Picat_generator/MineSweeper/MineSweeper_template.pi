@@ -1,0 +1,28 @@
+import sat.
+main =>
+    % define the problem instance
+    problem(Matrix),
+    NRows = Matrix.length,
+    NCols = Matrix[1].length,
+    % decision variables: where are the mines?
+    Mines = new_array(NRows,NCols),
+    Mines :: 0..1,
+    foreach (I in 1..NRows, J in 1..NCols)
+    % only check those cells that have hints
+    if ground(Matrix[I,J]) then
+    % The number of neighboring mines must equal Matrix[I,J].
+    Matrix[I,J] #= sum([Mines[I+A,J+B] :
+    A in -1..1, B in -1..1,
+    I+A > 0, J+B > 0,
+    I+A =< NRows, J+B =< NCols]),
+    % If there is a hint in a cell, then it cannot be a mine.
+    Mines[I,J] #= 0
+    end
+end,
+solve([dump],Mines),
+println(Mines).
+
+problem(P) =>
+P = {
+{*-Matrix-*}
+}.
